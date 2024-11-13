@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+.contenedorHeader {
+    background-image: url(./assets/peluqueria.jpg);
+    background-size: cover; /* Hace que la imagen cubra toda el área */
+    background-position: top; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 92vh; /* Ajusta la altura del contenedor al 100% de la altura de la ventana */
+}
+.Logo{
+    padding: 30px;
+    width: 250px;
+    height: 250px;
+}
+/*------------------------------ variable global de todos los titulos de las paginas ------------------------------------------------ */
+.tituloPrincipal { 
+    align-items: center;
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+.contenedorTituloPrincipal {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+    font-size: 50px;
+    padding: 20px;
+}
+.NavBar_li ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    font-size: 20px;
+    font-family: "Dela Gothic One", sans-serif;
+    font-style: normal;
+}
+.contenedorLogo-Turno {
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+}
