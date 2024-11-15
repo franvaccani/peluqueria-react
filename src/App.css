@@ -4,12 +4,22 @@
     background-size: cover; /* Hace que la imagen cubra toda el área */
     background-position: top; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
-    height: 92vh; /* Ajusta la altura del contenedor al 100% de la altura de la ventana */
+    height: 100vh; /* Ajusta la altura del contenedor al 100% de la altura de la ventana */
+}
+.chakra-ui-dark{
+    background-color: transparent !important;
 }
 .Logo{
     padding: 30px;
     width: 250px;
     height: 250px;
+    margin-left: 50px;
+}
+.Turno{
+    padding: 30px;
+    width: 250px;
+    height: 250px;
+    margin-right: 50px;
 }
 /*------------------------------ variable global de todos los titulos de las paginas ------------------------------------------------ */
 .tituloPrincipal { 
@@ -22,9 +32,9 @@
 .contenedorTituloPrincipal {
     display: flex;
     justify-content: center;
-    height: 80vh;
+    height: 30vh;
     align-items: center;
-    font-size: 50px;
+    font-size: 54px;
     padding: 20px;
 }
 .NavBar_li ul {
@@ -37,7 +47,7 @@
     font-style: normal;
 }
 .contenedorLogo-Turno {
-    height: 10vh;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

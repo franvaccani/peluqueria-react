@@ -1,5 +1,4 @@
 import { Center, Flex } from "@chakra-ui/react";
-import { div } from "framer-motion/client";
 
 export const Titulos = (props) => {
     const {h1,p}   = props;

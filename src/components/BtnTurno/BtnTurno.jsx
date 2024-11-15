@@ -14,8 +14,9 @@ const BtnTurno = () => {
       alignItems="center"
       justifyContent="center"
       position="relative"
-      w="150px"
-      h="150px"
+      w="200px"
+      h="200px"
+      bg="transparent"
       borderRadius="full"
       animation={`${pulsate} 2s infinite`}
       _hover={{
@@ -28,11 +29,13 @@ const BtnTurno = () => {
         href="#"
         borderRadius="full"
         p="4"
+        w="170px"
+        h="170px"
         fontSize="lg"
-        border="2px solid white"
+        border="1px solid white"
         bg="transparent"
         _hover={{
-          bg: 'whiteAlpha.300',
+          bg: 'whiteAlpha.100',
           color: 'white',
           transition: 'background 0.3s ease',
         }}
