@@ -1,0 +1,1 @@
+/* home - productos - detalle prod - categorias - perfil - cart -checkout -pagina de pago */
