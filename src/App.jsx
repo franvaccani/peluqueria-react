@@ -30,3 +30,5 @@ export default App;
   yo haria desde la api o bd balanceo de recarga, cola de mensajes <--------
   algo super importante, de igual forma saber las dos cosas 
   */
+
+  /* pregunta de mercado libre ---  LO PRINCIPAL SIEMPRE ES LA BASE DE DATOS QUE ESO TE DEFINE LA API (BACKEND) QUE CONECTA AL FRONT ¿? */

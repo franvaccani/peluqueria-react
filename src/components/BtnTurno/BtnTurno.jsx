@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
- const BtnTurno = () => {
+const BtnTurno = () => {
   return (
-    <button className="font-light text-white py-2 px-6 rounded-full border w-44 h-44 text-2xl tracking-wide transform transition-all duration-300 ease-in-out hover:bg-transparent hover:opacity-60 hover:scale-105 animate-pulse">
+    <Link
+      to="/reserva-turnos" // Especifica la ruta a la que redirige
+      className="font-light text-white py-2 px-6 rounded-full border-2 w-44 h-44 text-2xl tracking-wide transform transition-all duration-300 ease-in-out hover:bg-transparent hover:opacity-60 hover:scale-105 animate-pulse flex items-center justify-center text-center"
+    >
       Reservá tu turno
-    </button>
+    </Link>
   );
 };
 

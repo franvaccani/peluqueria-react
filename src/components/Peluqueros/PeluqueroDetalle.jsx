@@ -11,7 +11,7 @@ const PeluqueroDetalles = () => {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen py-10 text-white">
+    <div className="bg-[#000] flex justify-center items-center min-h-screen py-10 text-white">
       <div className="container mx-auto max-w-4xl text-center">
         <img
           src={peluquero.imagen}

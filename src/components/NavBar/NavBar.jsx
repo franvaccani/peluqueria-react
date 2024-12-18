@@ -5,7 +5,7 @@ export default () => {
 
     const [state, setState] = useState(false)
 
-    // Replace javascript:void(0) paths with your paths
+    
     const navigation = [
         { title: "Inicio", path: "/" },
         { title: "Nosotros", path: "/Nosotros" },
@@ -15,11 +15,11 @@ export default () => {
     ];
 
     return (
-        <nav className="bg-[#1c1c1c] p-4 border-b w-full md:static md:text-sm md:border-none">
+        <nav className="bg-[#1c1c1c] p-4 w-full md:static md:text-sm md:border-none sm:border-none ">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <div className="md:hidden">
-                        <button className="text-gray-500 hover:text-gray-800"
+                    <div className="md:hidden flex gap-2">
+                        <button className="text-gray-500"
                             onClick={() => setState(!state)}
                         >
                             {
@@ -34,6 +34,7 @@ export default () => {
                                 )
                             }
                         </button>
+                        <span className='block sm:hidden text-gray-400 font-semibold'>MENU</span>
                     </div>
                 </div>
 

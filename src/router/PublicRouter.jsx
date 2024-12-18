@@ -7,7 +7,7 @@ import Galeria from "../pages/Galeria";
 import Contacto from "../pages/Contacto";
 import NavBar from "../components/NavBar/NavBar";
 import PeluqueroDetalles from "../components/Peluqueros/PeluqueroDetalle";
-import PeluquerosList from "../components/Peluqueros/PeluquerosList";
+import ReservaTurnos from  "../components/ReservarTurnos/ReservarTurnos";
 export const PublicRouter = () => {
     return (
         <Router>
@@ -19,6 +19,7 @@ export const PublicRouter = () => {
                 <Route path="/Galeria" element={<Galeria />} />
                 <Route path="/Contacto" element={<Contacto />} />
                 <Route path="/peluquero/:id" element={<PeluqueroDetalles />} />
+                <Route path="/reserva-turnos" element={<ReservaTurnos />} /> {/* Nueva ruta */}
 
             </Routes>
         </Router>

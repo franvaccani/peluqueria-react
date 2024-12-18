@@ -4,18 +4,18 @@ import { peluqueros } from "./peluqueros";
 
 const PeluquerosList = () => {
   return (
-    <div className="bg-gray-900 min-h-screen py-10">
+    <div className="bg-[#1b1b1b] flex justify-center items-center min-h-screen py-10">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {peluqueros.map((peluquero) => (
           <div
             key={peluquero.id}
-            className="bg-gray-800 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition duration-300"
+            className="bg-transparent border border-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition duration-300"
           >
             <div className="flex justify-center mb-4">
               <img
                 src={peluquero.imagen}
                 alt={peluquero.nombre}
-                className="w-24 h-24 rounded-full object-cover border-4 border-gray-700"
+                className="w-24 h-24 rounded-full object-cover border border-white hover:border-orange-300 p-2 transition duration-300"
               />
             </div>
             <h3 className="text-white text-xl font-semibold">{peluquero.nombre}</h3>
