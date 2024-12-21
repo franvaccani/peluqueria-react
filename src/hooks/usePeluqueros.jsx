@@ -31,3 +31,6 @@ const usePeluqueros = () => {
 };
 
 export default usePeluqueros;
+
+
+/* Se conecta a la base de datos Firestore para obtener los documentos almacenados en la colección peluqueros.  */

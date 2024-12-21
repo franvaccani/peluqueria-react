@@ -27,7 +27,7 @@ const ReservaTurnos = () => {
   return (
     <div className="min-h-screen flex justify-center items-center py-10">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl">
-        <h1 className="text-3xl font-bold text-center text-black mb-12">Reserva tu Turno</h1>
+        <h1 className="text-3xl font-bold text-center text-black mb-12">Reservá tu turno</h1>
 
         {message && (
           <div
