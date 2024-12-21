@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{js,jsx}"], // Escanea los archivos en la carpeta src
   theme: {
     extend: {
