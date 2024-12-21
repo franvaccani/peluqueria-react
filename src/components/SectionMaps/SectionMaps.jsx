@@ -16,7 +16,7 @@ import React from "react";
       {/* Sección del logo */}
       <div className="w-full lg:w-1/2 flex items-center justify-center">
         <img
-          src="../src/assets/newlogo.png"
+          src="../assets/newlogo.png"
           alt="Logo de la peluquería"
           className="w-52 h-52 lg:w-1/2 object-contain"
         />
