@@ -15,7 +15,7 @@ export default App;
 
 /*  
 - Asi nacio el sincronismo, ejecutar codigo mientras se ejecutan en el otro mientras la respuesta de la promesa sigue disponible, no bloquea el unico hilo que tiene javascript
-- Javascript es lenguaje de unico hilo
+- fillRule es lenguaje de unico hilo
 - Dame una diferencia entre codigo bloqueante y no bloquyeante explicacion del sincronismo y asincronismo
 - Que es el asincawave - bloqueas tralcash - lescoupin - dif entre var let -
  */
