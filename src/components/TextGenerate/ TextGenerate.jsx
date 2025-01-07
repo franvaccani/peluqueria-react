@@ -49,7 +49,7 @@ const TextGenerate = ({
   return (
     <div className={cn("font-dela", className)}>
       <div className="mt-4">
-        <div className="dark:text-white text-black font-dela text-5xl leading-snug tracking-wide">
+        <div className="dark:text-white text-black font-dela text-7xl leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>

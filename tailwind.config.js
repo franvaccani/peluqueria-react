@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        dela: ['"Dela Gothic One"', 'sans-serif'], // Fuente personalizada
+        dela: ['"League Gothic"', 'sans-serif'], // Fuente personalizada existente
+        poppins: ['"Poppins"', 'sans-serif'], // Nueva fuente personalizada
       },
       animation: {
         borderExpand: 'borderExpand 2s infinite', // Animación de sombra expandida

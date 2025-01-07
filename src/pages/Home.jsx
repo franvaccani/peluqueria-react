@@ -15,7 +15,7 @@ const Home = () => {
                     <div className="contenedorhijo h-[92vh] flex flex-col items-center justify-center">
                         <div className="contenedorLogo-Turno flex justify-between w-5/6 items-center p-2 mb-24">
                             <div className="Logo">
-                                <img className="w-44 ml-16" src="./assets/newlogo.png" alt="Logo" />
+                                <img className="w-44 ml-16" src="../src/assets/newlogo.png" alt="Logo" />
                             </div>
                             <div className="Turno mr-16">
                                 <BtnTurno />
@@ -28,7 +28,7 @@ const Home = () => {
                 <main>
                     <div className="contenedorBienvenida bg-[#000] h-[50vh] flex justify-center">
                         <div className="flex flex-col justify-center items-center w-2/5">
-                            <div className="bienvenidaTitulo text-2xl text-white">
+                            <div className="bienvenidaTitulo font-poppins text-4xl text-white">
                                 <Titulos h1="BIENVENIDO/A A" />
                                 <Titulos h1="TDEB [ Hair Artist ]" />
                             </div>

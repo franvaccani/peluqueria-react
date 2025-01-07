@@ -1,13 +1,15 @@
 import React from "react";
 import Layout from "../layouts/Layout.jsx";
-
+import PageGaleria from "../components/PageGaleria/PageGaleria.jsx";
 
 
 const Galeria = () => {
 
     return (
-        <Layout>
-        </Layout>
+        <>
+        <PageGaleria />
+        <Layout />
+        </>
     )
     }
 

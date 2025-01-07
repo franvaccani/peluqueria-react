@@ -2,7 +2,7 @@
 const Costos = () => {
     return (
       <div className="bg-[#1b1b1b] h-[50vh] flex justify-center items-center font-sans flex-col text-white py-12 px-6">
-        <h2 className="text-center text-2xl font-extralight mb-10 font-dela">
+        <h2 className="text-center text-4xl font-extralight mb-10 font-dela">
           COSTOS & SERVICIOS
         </h2>
         <div className="max-w-md mx-auto">
