@@ -10,7 +10,7 @@ const usePeluqueros = () => {
   useEffect(() => {
     const fetchPeluqueros = async () => {
       try {
-        const peluquerosRef = collection(db, "peluqueros");
+        const peluquerosRef = collection(db, "peluqueros"); //LLAMA A LA BASE DE DATOS POR MEDIO DEL USEEFFECT <----
         const snapshot = await getDocs(peluquerosRef);
         const listaPeluqueros = snapshot.docs.map((doc) => ({
           id: doc.id,

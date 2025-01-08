@@ -28,3 +28,5 @@ export const CarritoProvider = ({ children }) => {
     </CarritoContext.Provider>
   );
 };
+
+/* Herramienta para compartir datos globales TEMA OSCURO, LOGIN USUARIO entre componentes, sin necesidad de pasar props manualmente por cada nivel. */

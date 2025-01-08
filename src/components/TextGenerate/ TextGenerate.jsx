@@ -10,7 +10,9 @@ const TextGenerate = ({
   duration = 0.999,
 }) => {
   const [isAnimated, setIsAnimated] = useState(false);
-  let wordsArray = words.split(" ");
+
+  // Reemplaza "<br />" con un marcador especial para luego separarlo
+  let wordsArray = words.split(/(<br \/>)/).filter(Boolean);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,26 +24,32 @@ const TextGenerate = ({
   const renderWords = () => {
     return (
       <motion.div>
-        {wordsArray.map((word, idx) => (
-          <motion.span
-            key={word + idx}
-            className="dark:text-white text-black font-dela opacity-0"
-            style={{
-              filter: filter && !isAnimated ? "blur(10px)" : "none",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              filter: filter && isAnimated ? "blur(0px)" : "none",
-            }}
-            transition={{
-              duration: duration,
-              delay: idx * 0.2, // Stagger the animations
-            }}
-          >
-            {word}{" "}
-          </motion.span>
-        ))}
+        {wordsArray.map((word, idx) => {
+          // Si encontramos el marcador "<br />", lo renderizamos como un <br />
+          if (word === "<br />") {
+            return <br key={idx} />;
+          }
+          return (
+            <motion.span
+              key={word + idx}
+              className="dark:text-white text-black font-dela opacity-0"
+              style={{
+                filter: filter && !isAnimated ? "blur(10px)" : "none",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                filter: filter && isAnimated ? "blur(0px)" : "none",
+              }}
+              transition={{
+                duration: duration,
+                delay: idx * 0.2, // Stagger the animations
+              }}
+            >
+              {word}{" "}
+            </motion.span>
+          );
+        })}
       </motion.div>
     );
   };
@@ -49,7 +57,7 @@ const TextGenerate = ({
   return (
     <div className={cn("font-dela", className)}>
       <div className="mt-4">
-        <div className="dark:text-white text-black font-dela text-7xl leading-snug tracking-wide">
+        <div className="dark:text-white items-center text-black font-dela text-8xl leading-snug">
           {renderWords()}
         </div>
       </div>

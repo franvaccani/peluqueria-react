@@ -16,14 +16,14 @@ const Home = () => {
                     <div className="contenedorhijo h-[92vh] flex flex-col items-center justify-center">
                         <div className="contenedorLogo-Turno flex justify-between w-5/6 items-center p-2 mb-24">
                             <div className="Logo">
-                                <img className="w-44 ml-16" src={Logo} alt="Logo" />
+                                <img className="w-48 ml-16" src={Logo} alt="Logo" />
                             </div>
                             <div className="Turno mr-16">
                                 <BtnTurno />
                             </div>
                         </div>
-                        <div className="contenedorTituloPrincipal font-dela h-44 flex justify-center items-center">
-                            <TextGenerate words="TU ESTILO, NUESTRA PASIÓN" />
+                        <div className="contenedorTituloPrincipal font-dela h-44 flex justify-center text-center items-center">
+                        <TextGenerate words="TU ESTILO, <br /> NUESTRA PASIÓN" />
                         </div>
                     </div>
                 <main>

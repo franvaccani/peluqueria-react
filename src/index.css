@@ -3,3 +3,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Agrega estas líneas a tu archivo CSS global */
+/* Definimos la animación para deslizamiento de abajo hacia arriba */
+/* Animación de deslizamiento de abajo hacia arriba */
+/* Animación de deslizamiento de abajo hacia arriba con opacidad */
+/* Animación para que el texto suba desde abajo y se haga visible */
+@keyframes slide-up {
+    0% {
+      transform: translateY(240px); /* Empieza más abajo, fuera de la vista */
+      opacity: 0; /* Comienza invisible */
+    }
+    100% {
+      transform: translateY(0); /* Llega a su posición original */
+      opacity: 1; /* Se hace visible */
+    }
+  }
+  
+  /* Clase que aplica la animación */
+  .slide-up {
+    animation: slide-up 0.6s ease-out forwards; /* Duración de 0.8s y efecto de suavizado */
+  }
+  
+  /* Asegurarse de que el contenido no se vea al principio */
+  .hiddenn {
+    opacity: 0;
+    transform: translateY(240px); /* Inicia fuera de la vista */
+  }
