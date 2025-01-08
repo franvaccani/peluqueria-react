@@ -1,5 +1,5 @@
 import React from "react";
-
+import Logo2 from "../../assets/newlogo.png"
  const SectionMaps = () => {
   return (
     <section className="flex flex-col h-[70vh] lg:flex-row items-center justify-between gap-6 px-6 py-12 bg-[#000]">
@@ -16,7 +16,7 @@ import React from "react";
       {/* Sección del logo */}
       <div className="w-full lg:w-1/2 flex items-center justify-center">
         <img
-          src="../src/assets/newlogo.png"
+          src={Logo2}
           alt="Logo de la peluquería"
           className="w-52 h-52 lg:w-1/2 object-contain"
         />
