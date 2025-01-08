@@ -6,6 +6,7 @@ import Titulos from "../components/Titulos/Titulos.jsx";
 import Costos from "../components/Costos/Costos.jsx";
 import SectionMaps from "../components/SectionMaps/SectionMaps.jsx";
 import PeluquerosList  from "../components/Peluqueros/PeluquerosList.jsx";
+import Logo from "../assets/newlogo.png"
 const Home = () => {
     return (
         <>
@@ -15,7 +16,7 @@ const Home = () => {
                     <div className="contenedorhijo h-[92vh] flex flex-col items-center justify-center">
                         <div className="contenedorLogo-Turno flex justify-between w-5/6 items-center p-2 mb-24">
                             <div className="Logo">
-                                <img className="w-44 ml-16" src="../assets/newlogo.png" alt="Logo" />
+                                <img className="w-44 ml-16" src={Logo} alt="Logo" />
                             </div>
                             <div className="Turno mr-16">
                                 <BtnTurno />
