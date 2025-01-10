@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./src/assets/newlogo.png" />
@@ -7,11 +8,18 @@
   <meta name="description" />
   <title>Dani Entraigas</title>
   <link rel="stylesheet" href="./src/App.css">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script>
+    const mp = new MercadoPago('APP_USR-720a96ab-0596-4f7b-a22b-160a81182fd9'); // Reemplaza con tu public_key
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
+  <!-- Agrega este script en la etiqueta <head> de index.html -->
+
   <script type="module" src="/src/main.jsx"></script>
+
 </body>
 
 </html>

@@ -7,7 +7,11 @@ import Galeria from "../pages/Galeria";
 import Contacto from "../pages/Contacto";
 import NavBar from "../components/NavBar/NavBar";
 import PeluqueroDetalles from "../components/Peluqueros/PeluqueroDetalle";
-import ReservaTurnos from  "../components/ReservarTurnos/ReservarTurnos";
+import ReservaTurnos from "../components/ReservarTurnos/ReservarTurnos";
+import Success from "../components/PagoExitoso/pagoExitoso";
+import Failure from "../components/PagoError/pagoError";
+import Pending from "../components/PagoPendiente/pagoPendiente";
+
 export const PublicRouter = () => {
     return (
         <Router>
@@ -20,7 +24,9 @@ export const PublicRouter = () => {
                 <Route path="/Contacto" element={<Contacto />} />
                 <Route path="/peluquero/:id" element={<PeluqueroDetalles />} />
                 <Route path="/reserva-turnos" element={<ReservaTurnos />} /> {/* Nueva ruta */}
-
+                <Route path="/success" element={<Success />} />
+                <Route path="/failure" element={<Failure />} />
+                <Route path="/pending" element={<Pending />} /> 
             </Routes>
         </Router>
     );

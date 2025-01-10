@@ -1,5 +1,10 @@
 import React from "react";
 import { PublicRouter } from "./router/PublicRouter";
+import { initMercadoPago } from '@mercadopago/sdk-react';
+
+// Inicializa Mercado Pago con tu PUBLIC_KEY
+initMercadoPago('TU_PUBLIC_KEY');
+
 function App() {
   return (
     <div className="App">

@@ -1,26 +1,24 @@
-import { collection, getDocs, addDoc } from "firebase/firestore"; // Asegúrate de importar addDoc
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "./config";
-
-export const obtenerPeluqueros = async () => {
-  const peluquerosRef = collection(db, "peluqueros");
-  const snapshot = await getDocs(peluquerosRef);
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-};
 
 export const reservarTurno = async (cliente, email, peluquero, fecha, hora, servicio) => {
   try {
-    await addDoc(collection(db, "turnos"), {
+    // Crea el turno en Firebase
+    const turnoRef = await addDoc(collection(db, "turnos"), {
       cliente,
       email,
       peluquero,
       fecha,
       hora,
       servicio,
-      estado: "pendiente", // Inicialmente el turno está pendiente
-      timestamp: new Date()
+      estado: "pendiente", // Estado inicial
+      timestamp: new Date(),
     });
-    console.log("¡Turno reservado exitosamente!");
+
+    console.log("Turno creado en Firebase con ID:", turnoRef.id);
+    return { success: true, turnoId: turnoRef.id };
   } catch (error) {
     console.error("Error al reservar turno: ", error);
+    return { success: false, error };
   }
 };

@@ -1,26 +1,74 @@
-import React, { useState } from "react";
-import { reservarTurno } from "../../firebase/firebaseFunctions";
-import usePeluqueros from "../../hooks/usePeluqueros"; 
+import React, { useState, useEffect } from "react";
+import { reservarTurno } from "../../firebase/firebaseFunctions"; // Asegúrate de tener esta función configurada correctamente
+import { crearPago } from "../../api/mercadoPago"; // La función que genera el enlace de pago
+import { db } from "../../firebase/config"; // Configuración de Firebase
+import { collection, getDocs } from "firebase/firestore"; // Para obtener datos de Firebase
 
 const ReservaTurnos = () => {
   const [cliente, setCliente] = useState("");
   const [email, setEmail] = useState("");
   const [peluquero, setPeluquero] = useState("");
+  const [peluqueros, setPeluqueros] = useState([]); // Lista de peluqueros
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [servicio, setServicio] = useState("");
+  const [precio, setPrecio] = useState(""); // Precio del servicio
   const [message, setMessage] = useState("");
 
-  const { peluqueros, error } = usePeluqueros(); //Hooks <----
+  // Cargar peluqueros desde Firebase al cargar el componente
+  useEffect(() => {
+    const obtenerPeluqueros = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "peluqueros"));
+        const peluquerosList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPeluqueros(peluquerosList);
+      } catch (error) {
+        console.error("Error al cargar peluqueros: ", error);
+      }
+    };
+
+    obtenerPeluqueros();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await reservarTurno(cliente, email, peluquero, fecha, hora, servicio);
-      setMessage("¡Turno reservado exitosamente!");
+      // Guardar el turno en Firebase
+      const result = await reservarTurno(
+        cliente,
+        email,
+        peluquero,
+        fecha,
+        hora,
+        servicio,
+        precio
+      );
+
+      if (result.success) {
+        const turno = {
+          peluquero,
+          precio,
+        };
+
+        // Crear el pago con Mercado Pago
+        const paymentLink = await crearPago(turno);
+
+        if (paymentLink) {
+          setMessage("Turno reservado con éxito. Redirigiendo al pago...");
+          window.location.href = paymentLink; // Redirigir al checkout de Mercado Pago
+        } else {
+          setMessage("Hubo un problema al generar el enlace de pago.");
+        }
+      } else {
+        setMessage("Hubo un problema al reservar el turno.");
+      }
     } catch (error) {
-      console.error(error);
-      setMessage("Hubo un problema al reservar el turno.");
+      console.error("Error al reservar el turno: ", error);
+      setMessage("Hubo un error inesperado.");
     }
   };
 
@@ -40,7 +88,7 @@ const ReservaTurnos = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Nombre */}
+          {/* Nombre del cliente */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Nombre</label>
             <input
@@ -52,7 +100,7 @@ const ReservaTurnos = () => {
             />
           </div>
 
-          {/* Email */}
+          {/* Email del cliente */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -67,26 +115,24 @@ const ReservaTurnos = () => {
           {/* Peluquero */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Peluquero</label>
-            {error ? (
-              <p className="text-red-500">{error}</p>
-            ) : (
-              <select
-                value={peluquero}
-                onChange={(e) => setPeluquero(e.target.value)}
-                required
-                className="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm"
-              >
-                <option value="">Selecciona un peluquero</option>
-                {peluqueros.map((peluquero) => (
-                  <option key={peluquero.id} value={peluquero.nombre}>
-                    {peluquero.nombre}
-                  </option>
-                ))}
-              </select>
-            )}
+            <select
+              value={peluquero}
+              onChange={(e) => setPeluquero(e.target.value)}
+              required
+              className="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm"
+            >
+              <option value="" disabled>
+                Seleccione un peluquero
+              </option>
+              {peluqueros.map((peluquero) => (
+                <option key={peluquero.id} value={peluquero.nombre}>
+                  {peluquero.nombre}
+                </option>
+              ))}
+            </select>
           </div>
 
-          {/* Otros campos y botón */}
+          {/* Fecha */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Fecha</label>
             <input
@@ -98,6 +144,7 @@ const ReservaTurnos = () => {
             />
           </div>
 
+          {/* Hora */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Hora</label>
             <input
@@ -109,6 +156,7 @@ const ReservaTurnos = () => {
             />
           </div>
 
+          {/* Servicio */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Servicio</label>
             <input
@@ -120,6 +168,19 @@ const ReservaTurnos = () => {
             />
           </div>
 
+          {/* Precio */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Precio</label>
+            <input
+              type="number"
+              value={precio}
+              onChange={(e) => setPrecio(e.target.value)}
+              required
+              className="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm"
+            />
+          </div>
+
+          {/* Botón de enviar */}
           <div className="text-center">
             <button
               type="submit"
