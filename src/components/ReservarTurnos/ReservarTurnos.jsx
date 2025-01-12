@@ -37,7 +37,7 @@ const ReservaTurnos = () => {
     e.preventDefault();
 
     try {
-      // Guardar el turno en Firebase
+      // Guardar el turno en Firebase (con todos los datos)
       const result = await reservarTurno(
         cliente,
         email,
@@ -54,7 +54,7 @@ const ReservaTurnos = () => {
           precio,
         };
 
-        // Crear el pago con Mercado Pago
+        // Crear el pago con Mercado Pago, solo con el nombre del peluquero y el precio
         const paymentLink = await crearPago(turno);
 
         if (paymentLink) {
