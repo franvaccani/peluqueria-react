@@ -5,7 +5,7 @@ const Costos = () => {
         <h2 className="text-center text-4xl font-extralight mb-10 font-dela">
           COSTOS & SERVICIOS
         </h2>
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto font-poppins">
           {/* Título */}
           {/* Lista de servicios */}
           <ul className="space-y-4">
