@@ -5,7 +5,7 @@ import { peluqueros } from "./peluqueros";
 const PeluquerosList = () => {
   return (
     <div className="bg-[#1b1b1b] flex justify-center items-center min-h-screen py-10">
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="container max-sm:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {peluqueros.map((peluquero) => (
           <div
             key={peluquero.id}
