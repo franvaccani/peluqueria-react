@@ -11,10 +11,8 @@ const ReservaTurnos = () => {
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [servicio, setServicio] = useState("");
+  const [precio, setPrecio] = useState(500); // Precio por defecto
   const [message, setMessage] = useState("");
-
-  // Precio fijo para los turnos (puedes cambiarlo según sea necesario)
-  const precioFijo = 500;
 
   // Cargar peluqueros desde Firebase al cargar el componente
   useEffect(() => {
@@ -34,6 +32,27 @@ const ReservaTurnos = () => {
     obtenerPeluqueros();
   }, []);
 
+  // Función para obtener la disponibilidad del peluquero
+  const obtenerDisponibilidad = async () => {
+    try {
+      if (!peluquero || !fecha) return;
+      
+      // Suponiendo que tienes un campo "disponibilidad" para cada peluquero
+      const peluqueroData = peluqueros.find(p => p.nombre === peluquero);
+      const disponibilidad = peluqueroData?.disponibilidad || []; // Filtrar por fecha y hora
+
+      // Aquí deberías actualizar el estado para manejar la disponibilidad, por ejemplo:
+      // - Filtrar las horas disponibles según la fecha elegida.
+      // - Actualizar el estado de las horas posibles en el select.
+    } catch (error) {
+      console.error("Error al obtener disponibilidad: ", error);
+    }
+  };
+
+  useEffect(() => {
+    obtenerDisponibilidad(); // Llamar a la función de disponibilidad cuando cambien la fecha o el peluquero
+  }, [peluquero, fecha]);
+
   // Función de pago con Mercado Pago
   const handlePago = async () => {
     const preference = {
@@ -42,7 +61,7 @@ const ReservaTurnos = () => {
           title: `Turno con ${peluquero} (${servicio})`,
           quantity: 1,
           currency_id: "ARS",
-          unit_price: precioFijo,
+          unit_price: precio,
         },
       ],
       payer: {
@@ -82,7 +101,7 @@ const ReservaTurnos = () => {
 
   // Función para manejar la reserva del turno
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+    e.preventDefault();
 
     try {
       // Llama a la función para reservar el turno
@@ -190,24 +209,38 @@ const ReservaTurnos = () => {
           {/* Servicio */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Servicio</label>
-            <input
-              type="text"
+            <select
               value={servicio}
-              onChange={(e) => setServicio(e.target.value)}
+              onChange={(e) => {
+                setServicio(e.target.value);
+                switch (e.target.value) {
+                  case "Cabello corto + lavado":
+                    setPrecio(12000);
+                    break;
+                  case "Cabello largo + lavado + tratamiento":
+                    setPrecio(16000);
+                    break;
+                  case "Cabello corto + color":
+                    setPrecio(14000);
+                    break;
+                }
+              }}
               required
               className="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm"
-            />
+            >
+              <option value="">Seleccione un servicio</option>
+              <option value="Cabello corto + lavado">Cabello corto + lavado</option>
+              <option value="Cabello largo + lavado + tratamiento">Cabello largo + lavado + tratamiento</option>
+              <option value="Cabello corto + color">Cabello corto + color</option>
+            </select>
           </div>
 
-          {/* Botón de enviar */}
-          <div className="text-center">
-            <button
-              type="submit"
-              className="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-900 transition duration-300"
-            >
-              Reservar Turno
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="w-full bg-black text-white font-poppins py-3 px-4 rounded-md"
+          >
+            Reservar y pagar
+          </button>
         </form>
       </div>
     </div>

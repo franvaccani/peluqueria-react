@@ -13,7 +13,7 @@ const Home = () => {
            
             <div className="contenedorHeader bg-[url('./assets/peluqueria.jpg')] bg-cover bg-top h-screen">
 
-                    <div className="contenedorhijo h-[92vh] flex flex-col items-center justify-center">
+                    <div className="contenedorhijo max-sm:h-[70vh] h-[92vh] flex flex-col items-center justify-center">
                         <div className="contenedorLogo-Turno max-sm:mb-1 flex justify-between w-5/6 items-center p-2 mb-24">
                             <div className="Logo">
                                 <img className="max-sm:w-32 w-48 max-sm:m-0  ml-16" src={Logo} alt="Logo" />
@@ -28,7 +28,7 @@ const Home = () => {
                     </div>
                 <main>
                     <div className="contenedorBienvenida bg-[#000] max-sm:h-[70vh]  h-[50vh] flex justify-center">
-                        <div className="flex flex-col justify-center items-center max-sm:w-56 w-2/5">
+                        <div className="flex flex-col justify-center items-center max-sm:w-80 w-2/5">
                             <div className="bienvenidaTitulo font-poppins text-4xl text-white">
                                 <Titulos h1="BIENVENIDO/A A" />
                                 <Titulos h1="TDEB [ Hair Artist ]" />
