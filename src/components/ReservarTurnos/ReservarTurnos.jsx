@@ -13,6 +13,9 @@ const ReservaTurnos = () => {
   const [servicio, setServicio] = useState("");
   const [message, setMessage] = useState("");
 
+  // Precio fijo para los turnos (puedes cambiarlo según sea necesario)
+  const precioFijo = 500;
+
   // Cargar peluqueros desde Firebase al cargar el componente
   useEffect(() => {
     const obtenerPeluqueros = async () => {
@@ -31,21 +34,70 @@ const ReservaTurnos = () => {
     obtenerPeluqueros();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Función de pago con Mercado Pago
+  const handlePago = async () => {
+    const preference = {
+      items: [
+        {
+          title: `Turno con ${peluquero} (${servicio})`,
+          quantity: 1,
+          currency_id: "ARS",
+          unit_price: precioFijo,
+        },
+      ],
+      payer: {
+        name: cliente,
+        email: email,
+      },
+      back_urls: {
+        success: "https://peluqueria-react.vercel.app/",
+        failure: "https://peluqueria-react.vercel.app/",
+        pending: "https://peluqueria-react.vercel.app/",
+      },
+      auto_return: "approved",
+    };
 
     try {
-      // Guardar el turno en Firebase
+      const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer APP_USR-3687730779340446-010908-14a4e0c513b2ba3bb1b3d7e1084ac3f5-157928366`, // Cambiado a Bearer
+        },
+        body: JSON.stringify(preference),
+      });
+
+      const data = await response.json();
+
+      if (data.init_point) {
+        window.location.href = data.init_point; // Redirige al checkout de Mercado Pago
+      } else {
+        setMessage("Error al procesar el pago. Inténtalo de nuevo.");
+      }
+    } catch (error) {
+      console.error("Error al conectar con Mercado Pago:", error);
+      setMessage("Hubo un error inesperado al procesar el pago.");
+    }
+  };
+
+  // Función para manejar la reserva del turno
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+    try {
+      // Llama a la función para reservar el turno
       const result = await reservarTurno(cliente, email, peluquero, fecha, hora, servicio);
 
       if (result.success) {
-        setMessage("Turno reservado con éxito.");
+        setMessage("Turno reservado con éxito. ID del turno: " + result.turnoId);
+        // Llamar a la función de pago después de reservar el turno
+        handlePago();
       } else {
-        setMessage("Hubo un problema al reservar el turno.");
+        setMessage("Hubo un problema al reservar el turno. Inténtalo de nuevo.");
       }
     } catch (error) {
-      console.error("Error al reservar el turno: ", error);
-      setMessage("Hubo un error inesperado.");
+      console.error("Error al reservar el turno:", error);
+      setMessage("Ocurrió un error inesperado al reservar el turno.");
     }
   };
 
@@ -57,7 +109,9 @@ const ReservaTurnos = () => {
         {message && (
           <div
             className={`text-center p-4 mb-4 ${
-              message.includes("problema") ? "bg-red-500" : "bg-green-500"
+              message.includes("problema") || message.includes("error")
+                ? "bg-red-500"
+                : "bg-green-500"
             } text-white rounded`}
           >
             {message}
