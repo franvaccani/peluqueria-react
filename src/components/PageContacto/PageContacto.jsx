@@ -31,8 +31,8 @@ const PageContacto = () => {
       </div>
 
       {/* Sección de contacto */}
-      <div className="bg-[#1b1b1b] max-sm:h-[100vh]  flex items-center h-[70vh] text-white py-16 px-8">
-        <div className="max-sm:h-[90vh]  font-poppins container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="bg-[#1b1b1b]  flex items-center h-[90vh] text-white py-16 px-8">
+        <div className="max-sm:h-[85vh] max-md:h-[85vh] w-[60%] max-sm:w-80  font-poppins container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Información de Contacto */}
           <div>
             <h2 className="text-3xl font-poppins mb-4">Información de Contacto</h2>

@@ -6,6 +6,7 @@ const Contacto = () => {
     return (
         <>
             <PageContacto />
+            <hr />
             <Layout />
         </>
 
