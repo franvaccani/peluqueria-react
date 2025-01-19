@@ -13,8 +13,8 @@ const Home = () => {
            
             <div className="contenedorHeader bg-[url('./assets/peluqueria.jpg')] bg-cover bg-top h-screen">
 
-                    <div className="contenedorhijo max-sm:h-[60vh] h-[92vh] flex flex-col items-center justify-center">
-                        <div className="contenedorLogo-Turno max-sm:mb-1 flex justify-between w-5/6 items-center p-2 mb-24">
+                    <div className="contenedorhijo max-sm:h-[70vh] max-sm:gap-16 h-[92vh] flex flex-col items-center justify-center">
+                        <div className="contenedorLogo-Turno max-sm:mb-1 max-sm:w-[85%] flex justify-between w-[90%] items-center p-2 mb-24">
                             <div className="Logo">
                                 <img className="max-sm:w-32 w-48 max-sm:m-0  ml-16" src={Logo} alt="Logo" />
                             </div>
